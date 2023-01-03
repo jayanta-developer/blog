@@ -1,5 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Container, Box } from "@mui/material"
+// import { FetchPost } from "../actions/index"
 
-export default function Post() {
-  return <div>Post</div>;
+class PostList extends React.Component {
+  componentDidMount() {
+    // this.props.FetchPost()
+  }
+  render() {
+    return <Container>
+      <Box>Post</Box>
+    </Container>
+  }
 }
+export default connect(null)(PostList);

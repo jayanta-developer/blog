@@ -1,12 +1,14 @@
 import React from "react";
+//ui
+import { Container } from "@mui/material"
 //component
 import Post from "./Post";
 
 const App = () => {
   return (
-    <div className="ui container">
+    <Container >
       <Post />
-    </div>
+    </Container>
   );
 };
 
