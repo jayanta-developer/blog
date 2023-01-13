@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Container, Box, Typography } from "@mui/material"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import UserHeader from "./UserHeader";
 import { FetchPost } from "../actions/index"
 
 class PostList extends React.Component {
@@ -9,6 +10,7 @@ class PostList extends React.Component {
     this.props.FetchPost()
   }
   renderPostList() {
+    console.log(this.props.user)
     if (!this.props.Posts) {
       return <Typography>Their is no post</Typography>
     }
@@ -18,8 +20,9 @@ class PostList extends React.Component {
           <Box sx={{
             display: "flex",
             flexDirection: "row",
-          }}><AccountCircleIcon /><Typography variant="h5">{post.title.charAt(0).toUpperCase() + post.title.slice(1)}</Typography></Box>
+          }}><Typography variant="h5">{post.title.charAt(0).toUpperCase() + post.title.slice(1)}</Typography></Box>
           <Box mx={2}><Typography variant="Subtitle">{post.body.charAt(0).toUpperCase() + post.body.slice(1)}</Typography></Box>
+          <AccountCircleIcon /><UserHeader userId={post.userId} />
         </Box>
       )
     })
