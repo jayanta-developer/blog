@@ -10,19 +10,18 @@ class PostList extends React.Component {
     this.props.FetchPost()
   }
   renderPostList() {
-    console.log(this.props.user)
-    if (!this.props.Posts) {
+    if (!this.props.posts) {
       return <Typography>Their is no post</Typography>
     }
-    return this.props.Posts.map(post => {
+    return this.props.posts.map(post => {
       return (
-        <Box m={5} key={post.id}>
+        <Box m={5} key={post.id} sx={{ border: "1px solid #a8a5a7cc", height: "120px", padding: "15px" }}>
+          <Box sx={{ display: 'flex', flexDirection: "row" }}> <AccountCircleIcon /><UserHeader userId={post.userId} /></Box>
           <Box sx={{
             display: "flex",
             flexDirection: "row",
           }}><Typography variant="h5">{post.title.charAt(0).toUpperCase() + post.title.slice(1)}</Typography></Box>
           <Box mx={2}><Typography variant="Subtitle">{post.body.charAt(0).toUpperCase() + post.body.slice(1)}</Typography></Box>
-          <AccountCircleIcon /><UserHeader userId={post.userId} />
         </Box>
       )
     })
