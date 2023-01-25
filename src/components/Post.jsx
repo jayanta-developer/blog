@@ -14,7 +14,7 @@ class PostList extends React.Component {
     }
     return this.props.Posts.map(post => {
       return (
-        <Box m={5} key={post.id}>
+        <Box m={5} key={post.id} sx={{ border: "gray solid 1px", borderRadius: "5px", padding: "5px" }}>
           <Box sx={{
             display: "flex",
             flexDirection: "row",
