@@ -1,16 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Container, Box, Typography } from "@mui/material"
+import { Container, Box, Typography } from "@mui/material";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import UserHeader from "./UserHeader";
-import { FetchPost } from "../actions/index"
+import { FetchPostAndUser } from "../actions/index";
 
 class PostList extends React.Component {
   componentDidMount() {
-    this.props.FetchPost()
+    this.props.FetchPostAndUser()
   }
   renderPostList() {
-    console.log(this.props.user)
     if (!this.props.Posts) {
       return <Typography>Their is no post</Typography>
     }
@@ -38,4 +37,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { FetchPost })(PostList);
+export default connect(mapStateToProps, { FetchPostAndUser })(PostList);
