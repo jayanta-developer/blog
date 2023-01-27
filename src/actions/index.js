@@ -3,8 +3,15 @@ import jsonPlaceholder from "../api/jsonPlaceholder";
 
 export const FetchPostAndUser = () => async (dispatch, getState) => {
   await dispatch(FetchPost());
-  const userIds = _.uniq(_.map(getState().Posts, "userId"));
-  userIds.forEach((userId) => dispatch(FetchUser(userId)));
+
+  // const userIds = _.uniq(_.map(getState().Posts, "userId"));
+  // userIds.forEach((userId) => dispatch(FetchUser(userId)));
+
+  _.chain(getState().Posts)
+    .map("userId")
+    .uniq()
+    .forEach((userId) => dispatch(FetchUser(userId)))
+    .value();
 };
 
 export const FetchPost = () => async (dispatch) => {
@@ -14,5 +21,5 @@ export const FetchPost = () => async (dispatch) => {
 
 export const FetchUser = (userId) => async (dispatch) => {
   const user = await jsonPlaceholder.get(`/users/${userId}`);
-  dispatch({ type: "FETCH_USER", payload: user });
+  dispatch({ type: "FETCH_USER", payload: user.data });
 };
