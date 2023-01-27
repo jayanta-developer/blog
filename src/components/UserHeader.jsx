@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 
 class UserHeader extends Component {
   render() {
+    console.log(this.props.user);
     const user = this.props.User.find((user) => user.id === this.props.userId);
     if (!user) return null;
-    return <p>{user.name}</p>;
+    return <div>name</div>;
   }
 }
 const mapStateToProps = (state) => {
