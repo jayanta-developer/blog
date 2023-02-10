@@ -10,7 +10,7 @@ class PostList extends React.Component {
     this.props.FetchPostAndUser()
   }
   renderPostList() {
-    if (!this.props.Posts) {
+    if (!this.props.posts) {
       return <Typography>Their is no post</Typography>
     }
     return this.props.posts.map(post => {
@@ -21,6 +21,7 @@ class PostList extends React.Component {
             flexDirection: "row",
           }}><Typography variant="h5">{post.title.charAt(0).toUpperCase() + post.title.slice(1)}</Typography></Box>
           <Box mx={2}><Typography variant="Subtitle">{post.body.charAt(0).toUpperCase() + post.body.slice(1)}</Typography></Box>
+          <Box sx={{ display: "flex", flexDirection: "row", justifyContent: "start", alignItems: "center" }}><AccountCircleIcon /><UserHeader userId={post.userId} /></Box>
         </Box>
       )
     })
