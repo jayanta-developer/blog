@@ -3,6 +3,7 @@ type Corse = {
   readonly price: number;
   ratting?: number;
 };
+// ? mark is use for define the field is not necessary;
 
 function createUser({ name, isPaid }: { name: string; isPaid: boolean }) {}
 
@@ -47,4 +48,50 @@ scores = 43242;
 type Admin = {
   userName: string;
   password: string | number;
+};
+
+//tupals
+
+let product: [string, number, boolean];
+
+product = ["Product", 43, true];
+
+//Enums
+enum SeatChoice {
+  AISLE = 5,
+  MIDDLE,
+  WINDOW,
+  FOURTH,
+}
+const mySeat = SeatChoice.AISLE;
+
+//InterFace
+interface user {
+  userName: string;
+  readonly DBid: string;
+  email: string;
+  // startTrail: () => string;
+  startTrail(): string;
+  getCoupon(couponName: string): number;
+}
+// i can reason the value again
+interface user {
+  gitHubId?: string;
+}
+
+interface admin extends user {
+  role: "admin" | "user";
+}
+
+const sovon: admin = {
+  DBid: "jkk34",
+  role: "admin",
+  userName: "sovon",
+  email: "sovon@gmail",
+  startTrail: () => {
+    return "Sovon";
+  },
+  getCoupon: (name: "sovon21") => {
+    return 324;
+  },
 };
